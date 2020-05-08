@@ -7,11 +7,13 @@ public class Hand : MonoBehaviour
 {
     BuildManager buildManager;
 
-    private void Start() {
+    private void Start()
+    {
         buildManager = BuildManager.Instance;
     }
 
-    public void Build(TowerBlueprint tower){
+    public void Build(TowerBlueprint tower)
+    {
         buildManager.SelectTurretToBuild(tower);
     }
 }

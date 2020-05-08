@@ -14,25 +14,33 @@ public class NodeUIManager : MonoBehaviour
 
     private Node target;
 
-    private void Update() {
-        if (target != null){
-            if (PlayerStats.money >= target.blueprint.upgradeCost && !target.isUpgraded){
-            upgradeButton.interactable = true;
-            } else {
+    private void Update()
+    {
+        if (target != null)
+        {
+            if (PlayerStats.money >= target.blueprint.upgradeCost && !target.isUpgraded)
+            {
+                upgradeButton.interactable = true;
+            }
+            else
+            {
                 upgradeButton.interactable = false;
             }
 
-            if (upgradeCost.text != "$" + target.blueprint.upgradeCost && !target.isUpgraded){
+            if (upgradeCost.text != "$" + target.blueprint.upgradeCost && !target.isUpgraded)
+            {
                 upgradeCost.text = "$" + target.blueprint.upgradeCost;
             }
 
-            if (upgradeCost.text != "UPGRADED" && target.isUpgraded){
+            if (upgradeCost.text != "UPGRADED" && target.isUpgraded)
+            {
                 upgradeCost.text = "UPGRADED";
             }
         }
     }
 
-    public void SetTarget(Node _target){
+    public void SetTarget(Node _target)
+    {
         target = _target;
 
         transform.position = target.GetBuildPosition();
@@ -42,17 +50,20 @@ public class NodeUIManager : MonoBehaviour
         ui.SetActive(true);
     }
 
-    public void Hide(){
+    public void Hide()
+    {
         target = null;
         ui.SetActive(false);
     }
 
-    public void Upgrade(){
+    public void Upgrade()
+    {
         target.UpgradeTurret();
         BuildManager.Instance.DeselectNode();
     }
 
-    public void Sell(){
+    public void Sell()
+    {
         target.SellTurret();
         BuildManager.Instance.DeselectNode();
     }

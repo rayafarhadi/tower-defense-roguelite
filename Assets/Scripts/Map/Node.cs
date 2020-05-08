@@ -91,7 +91,8 @@ public class Node : MonoBehaviour
         Destroy(effect, 5f);
     }
 
-    public void UpgradeTurret(){
+    public void UpgradeTurret()
+    {
 
         //Remove unupgraded turret
         Destroy(turret);
@@ -110,7 +111,8 @@ public class Node : MonoBehaviour
         isUpgraded = true;
     }
 
-    public void SellTurret(){
+    public void SellTurret()
+    {
         PlayerStats.money += blueprint.GetSellAmount(isUpgraded);
         Destroy(turret);
 

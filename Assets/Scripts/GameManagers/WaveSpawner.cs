@@ -25,16 +25,19 @@ public class WaveSpawner : MonoBehaviour
         lastWave = waves.Length - 1;
     }
 
-    private void Update() {
+    private void Update()
+    {
         Debug.Log(waveInProgress);
-        if(waveSpawned && !waveInProgress){
+        if (waveSpawned && !waveInProgress)
+        {
             startWaveButton.interactable = true;
             waveButtonText.text = "Start Wave";
             waveSpawned = false;
         }
     }
 
-    public void StartWave(){
+    public void StartWave()
+    {
 
         StartCoroutine(SpawnWave());
         startWaveButton.interactable = false;
@@ -64,11 +67,13 @@ public class WaveSpawner : MonoBehaviour
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
     }
 
-    public static void UpdateWaveStatus(){
+    public static void UpdateWaveStatus()
+    {
         enemiesToKill--;
         waveInProgress = enemiesToKill > 0;
         Debug.Log("Enemies left to kill: " + enemiesToKill);
-        if(!waveInProgress){
+        if (!waveInProgress)
+        {
             currentWave++;
         }
     }

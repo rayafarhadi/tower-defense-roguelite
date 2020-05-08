@@ -11,16 +11,19 @@ public class GameOver : MonoBehaviour
     public string menuScene = "MainMenu";
 
     public Text waveCountText;
-    
-    private void OnEnable() {
+
+    private void OnEnable()
+    {
         waveCountText.text = PlayerStats.wavesSurvived.ToString();
     }
 
-    public void Retry(){
+    public void Retry()
+    {
         sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
-    public void Menu(){
+    public void Menu()
+    {
         sceneFader.FadeTo(menuScene);
     }
 }

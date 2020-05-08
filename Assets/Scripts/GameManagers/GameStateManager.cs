@@ -29,7 +29,8 @@ public class GameStateManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         gameOver = false;
         paused = false;
 
@@ -43,7 +44,8 @@ public class GameStateManager : MonoBehaviour
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("p")){
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown("p"))
+        {
             Pause();
         }
 
@@ -60,14 +62,16 @@ public class GameStateManager : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
-    private void Pause(){
+    private void Pause()
+    {
         paused = true;
         pauseUI.SetActive(true);
 
         Time.timeScale = 0f;
     }
 
-    public void Unpause(){
+    public void Unpause()
+    {
         paused = false;
         pauseUI.SetActive(false);
 

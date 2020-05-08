@@ -41,7 +41,8 @@ public class BuildManager : MonoBehaviour
         DeselectNode();
     }
 
-    public void DeselectTurretToBuild(){
+    public void DeselectTurretToBuild()
+    {
         turretToBuild = null;
     }
 

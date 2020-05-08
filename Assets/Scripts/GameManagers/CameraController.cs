@@ -13,7 +13,8 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
 
-        if (GameStateManager.gameOver){
+        if (GameStateManager.gameOver)
+        {
             this.enabled = false;
             return;
         }
