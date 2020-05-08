@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Hand : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    BuildManager buildManager;
+
+    private void Start() {
+        buildManager = BuildManager.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void Build(TowerBlueprint tower){
+        buildManager.SelectTurretToBuild(tower);
     }
 }

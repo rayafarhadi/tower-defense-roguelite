@@ -14,7 +14,7 @@ public class Node : MonoBehaviour
     [HideInInspector]
     public GameObject turret;
     [HideInInspector]
-    public TurretBlueprint blueprint;
+    public TowerBlueprint blueprint;
     [HideInInspector]
     public bool isUpgraded;
 
@@ -78,7 +78,7 @@ public class Node : MonoBehaviour
         r.material.color = defaultColor;
     }
 
-    private void BuildTurret(TurretBlueprint _blueprint)
+    private void BuildTurret(TowerBlueprint _blueprint)
     {
         blueprint = _blueprint;
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);

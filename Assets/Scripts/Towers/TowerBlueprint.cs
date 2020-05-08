@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class TurretBlueprint
+public class TowerBlueprint
 {
     public GameObject prefab;
     public int cost;
-    public Button button;
 
     public GameObject upgradedPrefab;
     public int upgradeCost;

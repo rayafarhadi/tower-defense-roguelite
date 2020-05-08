@@ -5,9 +5,9 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
 
-    public TurretBlueprint standardTurret;
-    public TurretBlueprint missleLauncher;
-    public TurretBlueprint laserBeamer;
+    public TowerBlueprint standardTurret;
+    public TowerBlueprint missleLauncher;
+    public TowerBlueprint laserBeamer;
 
     BuildManager buildManager;
 
@@ -37,34 +37,4 @@ public class Shop : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        if (PlayerStats.money >= standardTurret.cost)
-        {
-            standardTurret.button.interactable = true;
-        }
-        else
-        {
-            standardTurret.button.interactable = false;
-        }
-
-        if (PlayerStats.money >= missleLauncher.cost)
-        {
-            missleLauncher.button.interactable = true;
-        }
-        else
-        {
-            missleLauncher.button.interactable = false;
-        }
-
-        if (PlayerStats.money >= laserBeamer.cost)
-        {
-            laserBeamer.button.interactable = true;
-        }
-        else
-        {
-            laserBeamer.button.interactable = false;
-        }
-
-    }
 }

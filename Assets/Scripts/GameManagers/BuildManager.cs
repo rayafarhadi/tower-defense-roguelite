@@ -15,7 +15,7 @@ public class BuildManager : MonoBehaviour
     public GameObject buildEffect;
     public GameObject sellEffect;
 
-    private TurretBlueprint turretToBuild;
+    private TowerBlueprint turretToBuild;
     private Node selectedNode;
     public NodeUIManager nodeUI;
     public bool CanBuild
@@ -34,7 +34,7 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public void SelectTurretToBuild(TurretBlueprint turret)
+    public void SelectTurretToBuild(TowerBlueprint turret)
     {
         turretToBuild = turret;
 
@@ -45,7 +45,7 @@ public class BuildManager : MonoBehaviour
         turretToBuild = null;
     }
 
-    public TurretBlueprint GetTurretToBuild()
+    public TowerBlueprint GetTurretToBuild()
     {
         return turretToBuild;
     }

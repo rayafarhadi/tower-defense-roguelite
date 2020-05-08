@@ -8,49 +8,38 @@ public class WaveSpawner : MonoBehaviour
 
     private static int enemiesToKill = 0;
     private static bool waveInProgress = false;
-    private static bool stopSpawning = false;
+    private static bool waveSpawned = false;
 
     public Wave[] waves;
     private static int lastWave;
     public Transform spawnPoint;
 
-    public float waveInterval = 20f;
-    private float countdown;
-    public Text waveCountdownTimer;
+    public Button startWaveButton;
+    public Text waveButtonText;
+
     private static int waveToSpawn = 0;
     private static int currentWave = 0;
 
     private void Start()
     {
-        countdown = waveInterval;
         lastWave = waves.Length - 1;
     }
 
-    private void Update()
-    {
-
-        if (stopSpawning){
-            this.enabled = false;
+    private void Update() {
+        Debug.Log(waveInProgress);
+        if(waveSpawned && !waveInProgress){
+            startWaveButton.interactable = true;
+            waveButtonText.text = "Start Wave";
+            waveSpawned = false;
         }
+    }
 
-        if (waveInProgress)
-        {
-            return;
-        }
+    public void StartWave(){
 
-        if (countdown <= 0f)
-        {
-            PlayerStats.wavesSurvived++;
-            StartCoroutine(SpawnWave());
-            countdown = waveInterval;
-            return;
-        }
+        StartCoroutine(SpawnWave());
+        startWaveButton.interactable = false;
+        waveButtonText.text = "Wave In Progress";
 
-        countdown -= Time.deltaTime;
-
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-
-        waveCountdownTimer.text = string.Format("{0:00.00}", countdown);
     }
 
     IEnumerator SpawnWave()
@@ -67,6 +56,7 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveToSpawn++;
+        waveSpawned = true;
     }
 
     private void SpawnEnemy(GameObject enemy)
@@ -80,10 +70,6 @@ public class WaveSpawner : MonoBehaviour
         Debug.Log("Enemies left to kill: " + enemiesToKill);
         if(!waveInProgress){
             currentWave++;
-            if (currentWave > lastWave)
-            {
-                stopSpawning = true;
-            }
         }
     }
 }

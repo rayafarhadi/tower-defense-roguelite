@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Tower : MonoBehaviour
 {
     private Transform target;
     private EnemyStats targetStats;
