@@ -27,7 +27,6 @@ public class WaveSpawner : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(waveInProgress);
         if (waveSpawned && !waveInProgress)
         {
             startWaveButton.interactable = true;
