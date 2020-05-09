@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
 
     [Header("General Stats")]
     public float range = 15f;
+    public int energyCost;
 
     [Header("Bullet Properties (default)")]
     public float fireRate = 1f;

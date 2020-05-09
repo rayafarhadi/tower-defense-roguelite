@@ -82,6 +82,7 @@ public class Node : MonoBehaviour
         Hand.activeCard.played = true;
 
         BuildManager.Instance.DeselectTurretToBuild();
+        PlayerStats.energy -= tower.energyCost;
 
         GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);

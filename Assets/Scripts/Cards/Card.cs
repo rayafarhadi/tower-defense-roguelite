@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
@@ -11,6 +12,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public Hand hand;
     public Tower tower;
     public int energyCost;
+    public Text energyText;
 
     [HideInInspector]
     public bool played = false;
@@ -18,14 +20,18 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left){
-            Hand.activeCard = this;
-            PerformAction();
+            if(PlayerStats.energy >= energyCost){
+                Hand.activeCard = this;
+                PerformAction();
+            }
         }
     }
 
     private void Start()
     {
         buildManager = BuildManager.Instance;
+        setEnergyText();
+        tower.energyCost = energyCost;
     }
 
     private void Update() {
@@ -35,6 +41,10 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler
     }
 
     public abstract void PerformAction();
+
+    private void setEnergyText(){
+        energyText.text = energyCost.ToString();
+    }
 
     public void AdjustTransforms(Transform _transform){
         transform.SetParent(_transform);

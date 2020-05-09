@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EncounterManager : MonoBehaviour
 {
     public WaveSpawner waveSpawner;
     public Deck encounterDeck;
     public int dealAmount = 5;
+
+    public Text energyText;
 
 
     private void Start() {
@@ -24,7 +27,11 @@ public class EncounterManager : MonoBehaviour
         if(waveSpawner.waveEnded){
             encounterDeck.Deal(dealAmount);
             waveSpawner.waveEnded = false;
+            PlayerStats.ResetEnergy();
         }
+
+        energyText.text = PlayerStats.energy.ToString();
+
     }
 
     private void InitializeDeck(){

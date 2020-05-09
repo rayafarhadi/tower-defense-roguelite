@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicTowerCard : Card
 {
-  
+
     public override void PerformAction(){
         buildManager.SelectTurretToBuild(tower);
     }

@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
     public int startLives = 20;
 
     public static int energy;
-    public int maxEnergy = 3;
+    private static int maxEnergy = 3;
 
     public static List<Card> playerDeck;
 
@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        energy = maxEnergy;
         lives = startLives;
     }
 
@@ -38,4 +39,9 @@ public class PlayerStats : MonoBehaviour
 
         return starterDeck;
     }
+
+    public static void ResetEnergy(){
+        energy = maxEnergy;
+    }
+
 }
