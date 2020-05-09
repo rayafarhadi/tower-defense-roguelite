@@ -37,8 +37,8 @@ public class Card : MonoBehaviour, IPointerClickHandler
         buildManager.SelectTurretToBuild(tower);
     }
 
-    public void AdjustTransforms(Transform handTransform){
-        transform.SetParent(handTransform);
+    public void AdjustTransforms(Transform _transform){
+        transform.SetParent(_transform);
         RectTransform rectTransform = (RectTransform) GetComponent(typeof(RectTransform));
         rectTransform.anchorMax = new Vector2(0.5f, 0.5f);
         rectTransform.anchorMin = new Vector2(0.5f, 0.5f);

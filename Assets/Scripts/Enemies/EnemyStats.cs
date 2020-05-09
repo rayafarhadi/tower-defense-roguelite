@@ -46,7 +46,6 @@ public class EnemyStats : MonoBehaviour
     private void Die()
     {
         dead = true;
-        PlayerStats.money += reward;
 
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, transform.rotation);
         Destroy(effect, 5f);

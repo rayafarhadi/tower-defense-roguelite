@@ -4,18 +4,38 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static int money;
-    public int startMoney = 400;
 
     public static int lives;
     public int startLives = 20;
 
     public static int wavesSurvived;
 
+    public static List<Card> playerDeck;
+
+    public Card cardPrefab; //TEMP
+
+    private void Awake()
+    {
+        playerDeck = StarterDeck();
+    }
+
     private void Start()
     {
-        money = startMoney;
         lives = startLives;
         wavesSurvived = -1;
+    }
+
+    private List<Card> StarterDeck()
+    {
+        List<Card> starterDeck = new List<Card>();
+
+        for (int i = 0; i < 10; i++)
+        {
+            Card card = Instantiate(cardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            card.gameObject.SetActive(false);
+            starterDeck.Add(card);
+        }
+
+        return starterDeck;
     }
 }

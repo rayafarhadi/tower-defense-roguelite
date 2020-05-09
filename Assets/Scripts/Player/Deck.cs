@@ -13,19 +13,9 @@ public class Deck : MonoBehaviour
     public Text deckSizeText;
     public Text discardSizeText;
 
-    public Card cardPrefab; //TEMP
-
     private void Start() {
-        deck = new Stack<Card>();
         discard = new Stack<Card>();
         hand.deck = this;
-        for (int i = 0; i < 10; i++){
-            Card card = Instantiate(cardPrefab, new Vector3(0,0,0), Quaternion.identity);
-            card.gameObject.SetActive(false);
-            deck.Push(card);
-        }
-
-        deckSizeText.text = deck.Count.ToString();
     }
 
     public void Deal(int numCards){
@@ -52,6 +42,7 @@ public class Deck : MonoBehaviour
 
     public void AddToDiscard(Card card){
         card.played = false;
+        card.AdjustTransforms(transform);
         discard.Push(card);
         discardSizeText.text = discard.Count.ToString();
     }

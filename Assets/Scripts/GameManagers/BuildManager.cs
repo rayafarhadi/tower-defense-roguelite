@@ -17,7 +17,6 @@ public class BuildManager : MonoBehaviour
 
     private TowerBlueprint turretToBuild;
     private Node selectedNode;
-    public NodeUIManager nodeUI;
     public bool CanBuild
     {
         get { return turretToBuild != null; }
@@ -62,14 +61,11 @@ public class BuildManager : MonoBehaviour
 
         selectedNode = node;
         turretToBuild = null;
-
-        nodeUI.SetTarget(node);
     }
 
     public void DeselectNode()
     {
         selectedNode = null;
-        nodeUI.Hide();
     }
 
 }

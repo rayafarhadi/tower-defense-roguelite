@@ -9,9 +9,9 @@ public class WaveSpawner : MonoBehaviour
     private static int enemiesToKill = 0;
     private static bool waveInProgress = false;
     private static bool waveSpawned = false;
+    public bool waveEnded = false;
 
     public Wave[] waves;
-    private static int lastWave;
     public Transform spawnPoint;
 
     public Button startWaveButton;
@@ -20,10 +20,6 @@ public class WaveSpawner : MonoBehaviour
     private static int waveToSpawn = 0;
     private static int currentWave = 0;
 
-    private void Start()
-    {
-        lastWave = waves.Length - 1;
-    }
 
     private void Update()
     {
@@ -32,6 +28,7 @@ public class WaveSpawner : MonoBehaviour
             startWaveButton.interactable = true;
             waveButtonText.text = "Start Wave";
             waveSpawned = false;
+            waveEnded = true;
         }
     }
 

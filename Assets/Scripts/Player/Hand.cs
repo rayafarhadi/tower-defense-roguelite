@@ -18,7 +18,7 @@ public class Hand : MonoBehaviour
     // cardInterval = handLength / cards.Length;
     // cardPos = (-handLength/2) + cardInterval*i;
     
-    private void Start() {
+    private void Awake() {
         hand = new Card[9];
     }
 
