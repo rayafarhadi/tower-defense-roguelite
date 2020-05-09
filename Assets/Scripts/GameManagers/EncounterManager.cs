@@ -37,8 +37,11 @@ public class EncounterManager : MonoBehaviour
     private void InitializeDeck(){
         List<Card> playerDeck = PlayerStats.playerDeck;
         encounterDeck.deck = new Stack<Card>();
+
         for (int i = 0; i < playerDeck.Count; i++){
             encounterDeck.deck.Push(playerDeck[i]);
         }
+
+        encounterDeck.Shuffle();
     }
 }

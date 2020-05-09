@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicTowerCard : Card
+public class BuildTowerCard : Card
 {
 
     public override void PerformAction(){
