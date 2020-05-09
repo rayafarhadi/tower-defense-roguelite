@@ -12,9 +12,7 @@ public class Node : MonoBehaviour
     public Vector3 positionOffset;
 
     [HideInInspector]
-    public GameObject turret;
-    [HideInInspector]
-    public TowerBlueprint blueprint;
+    public Tower tower;
     [HideInInspector]
     public bool isUpgraded;
 
@@ -37,7 +35,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (turret != null)
+        if (tower != null)
         {
             buildManager.SelectNode(this);
             return;
@@ -65,7 +63,7 @@ public class Node : MonoBehaviour
             return;
         }
 
-        if (turret != null)
+        if (tower != null)
         {
             return;
         }
@@ -78,45 +76,15 @@ public class Node : MonoBehaviour
         r.material.color = defaultColor;
     }
 
-    private void BuildTurret(TowerBlueprint _blueprint)
+    private void BuildTurret(Tower _tower)
     {
-        blueprint = _blueprint;
-        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
-        turret = _turret;
+        tower = (Tower)Instantiate(_tower, GetBuildPosition(), Quaternion.identity);
         Hand.activeCard.played = true;
 
         BuildManager.Instance.DeselectTurretToBuild();
 
         GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
-    }
-
-    public void UpgradeTurret()
-    {
-
-        //Remove unupgraded turret
-        Destroy(turret);
-
-        //Place upgraded turret
-        GameObject _turret = (GameObject)Instantiate(blueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
-        turret = _turret;
-
-        //Build effect
-        GameObject effect = (GameObject)Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-
-        isUpgraded = true;
-    }
-
-    public void SellTurret()
-    {
-        Destroy(turret);
-
-        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
-
-        blueprint = null;
-        isUpgraded = false;
     }
 
     public Vector3 GetBuildPosition()

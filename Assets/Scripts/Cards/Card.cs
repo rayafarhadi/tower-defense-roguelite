@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Card : MonoBehaviour, IPointerClickHandler
+public abstract class Card : MonoBehaviour, IPointerClickHandler
 {
 
-    private BuildManager buildManager;
+    protected BuildManager buildManager;
 
     public Hand hand;
-    public TowerBlueprint tower;
+    public Tower tower;
+    public int energyCost;
 
+    [HideInInspector]
     public bool played = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left){
             Hand.activeCard = this;
-            Build(tower);
+            PerformAction();
         }
     }
 
@@ -32,10 +34,7 @@ public class Card : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    public void Build(TowerBlueprint tower)
-    {
-        buildManager.SelectTurretToBuild(tower);
-    }
+    public abstract void PerformAction();
 
     public void AdjustTransforms(Transform _transform){
         transform.SetParent(_transform);

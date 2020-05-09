@@ -15,11 +15,11 @@ public class BuildManager : MonoBehaviour
     public GameObject buildEffect;
     public GameObject sellEffect;
 
-    private TowerBlueprint turretToBuild;
+    private Tower towerToBuild;
     private Node selectedNode;
     public bool CanBuild
     {
-        get { return turretToBuild != null; }
+        get { return towerToBuild != null; }
     }
 
     private void Awake()
@@ -33,21 +33,21 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    public void SelectTurretToBuild(TowerBlueprint turret)
+    public void SelectTurretToBuild(Tower tower)
     {
-        turretToBuild = turret;
+        towerToBuild = tower;
 
         DeselectNode();
     }
 
     public void DeselectTurretToBuild()
     {
-        turretToBuild = null;
+        towerToBuild = null;
     }
 
-    public TowerBlueprint GetTurretToBuild()
+    public Tower GetTurretToBuild()
     {
-        return turretToBuild;
+        return towerToBuild;
     }
 
     public void SelectNode(Node node)
@@ -60,7 +60,7 @@ public class BuildManager : MonoBehaviour
         }
 
         selectedNode = node;
-        turretToBuild = null;
+        towerToBuild = null;
     }
 
     public void DeselectNode()
