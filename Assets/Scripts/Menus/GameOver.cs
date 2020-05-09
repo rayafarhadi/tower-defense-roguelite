@@ -14,7 +14,7 @@ public class GameOver : MonoBehaviour
 
     private void OnEnable()
     {
-        waveCountText.text = PlayerStats.wavesSurvived.ToString();
+        waveCountText.text = "0";
     }
 
     public void Retry()

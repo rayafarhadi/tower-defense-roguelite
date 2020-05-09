@@ -13,10 +13,6 @@ public class Hand : MonoBehaviour
 
     public int maxHandSize = 9;
     private int handSize = 0;
-
-    // handLength = (cardWidth/2) + (cardWidth/2)*cards.Length;
-    // cardInterval = handLength / cards.Length;
-    // cardPos = (-handLength/2) + cardInterval*i;
     
     private void Awake() {
         hand = new Card[9];
@@ -62,8 +58,16 @@ public class Hand : MonoBehaviour
         handSize--;
         hand[handSize] = null;
 
-        card.gameObject.SetActive(false);
         deck.AddToDiscard(card);
+    }
+
+    public void DiscardHand(){
+        for(int i = 0; i < handSize; i++){
+            deck.AddToDiscard(hand[i]);
+            hand[i] = null;
+        }
+
+        handSize = 0;
     }
 
     public int GetHandSize(){

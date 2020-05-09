@@ -15,6 +15,12 @@ public class EncounterManager : MonoBehaviour
     }
 
     private void Update() {
+
+        if(waveSpawner.waveStarted){
+            encounterDeck.hand.DiscardHand();
+            waveSpawner.waveStarted = false;
+        }
+
         if(waveSpawner.waveEnded){
             encounterDeck.Deal(dealAmount);
             waveSpawner.waveEnded = false;

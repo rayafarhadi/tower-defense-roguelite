@@ -19833,6 +19833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveEnded: 0
+  waveStarted: 0
   waves:
   - enemy: {fileID: 2967768535827829748, guid: 7e8b3ce871f778f49bd6c205b2bd3843, type: 3}
     enemyCount: 3
@@ -19907,7 +19908,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startLives: 20
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 2041149708887638980, guid: bb8b97322b5cd884aae535fc6754f50c,
+    type: 3}
 --- !u!114 &1950637088
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class WaveSpawner : MonoBehaviour
     private static bool waveInProgress = false;
     private static bool waveSpawned = false;
     public bool waveEnded = false;
+    public bool waveStarted = false;
 
     public Wave[] waves;
     public Transform spawnPoint;
@@ -44,6 +45,7 @@ public class WaveSpawner : MonoBehaviour
     IEnumerator SpawnWave()
     {
         waveInProgress = true;
+        waveStarted = true;
         enemiesToKill = waves[currentWave].enemyCount;
 
         Wave wave = waves[waveToSpawn];
@@ -67,10 +69,13 @@ public class WaveSpawner : MonoBehaviour
     {
         enemiesToKill--;
         waveInProgress = enemiesToKill > 0;
-        Debug.Log("Enemies left to kill: " + enemiesToKill);
         if (!waveInProgress)
         {
             currentWave++;
         }
+    }
+
+    public bool IsWaveInProgress(){
+        return waveInProgress;
     }
 }

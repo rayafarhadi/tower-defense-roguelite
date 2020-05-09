@@ -41,6 +41,7 @@ public class Deck : MonoBehaviour
     }
 
     public void AddToDiscard(Card card){
+        card.gameObject.SetActive(false);
         card.played = false;
         card.AdjustTransforms(transform);
         discard.Push(card);

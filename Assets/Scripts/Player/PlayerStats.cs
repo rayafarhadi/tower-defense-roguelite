@@ -8,7 +8,8 @@ public class PlayerStats : MonoBehaviour
     public static int lives;
     public int startLives = 20;
 
-    public static int wavesSurvived;
+    public static int energy;
+    public int maxEnergy = 3;
 
     public static List<Card> playerDeck;
 
@@ -22,7 +23,6 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         lives = startLives;
-        wavesSurvived = -1;
     }
 
     private List<Card> StarterDeck()
