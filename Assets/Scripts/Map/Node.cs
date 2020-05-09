@@ -84,6 +84,7 @@ public class Node : MonoBehaviour
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
         turret = _turret;
         PlayerStats.money -= blueprint.cost;
+        Hand.activeCard.played = true;
 
         BuildManager.Instance.DeselectTurretToBuild();
 

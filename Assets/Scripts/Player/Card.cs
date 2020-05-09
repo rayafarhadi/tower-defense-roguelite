@@ -11,19 +11,25 @@ public class Card : MonoBehaviour, IPointerClickHandler
     public Hand hand;
     public TowerBlueprint tower;
 
+    public bool played = false;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left){
+            Hand.activeCard = this;
             Build(tower);
-        else if (eventData.button == PointerEventData.InputButton.Middle)
-            Debug.Log("Middle click");
-        else if (eventData.button == PointerEventData.InputButton.Right)
-            Debug.Log("Right click");
+        }
     }
 
     private void Start()
     {
         buildManager = BuildManager.Instance;
+    }
+
+    private void Update() {
+        if(played){
+            hand.Discard(this);
+        }
     }
 
     public void Build(TowerBlueprint tower)
