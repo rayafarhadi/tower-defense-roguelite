@@ -17,6 +17,11 @@ public class CardCollection : MonoBehaviour
     }
 
     private void Awake() {
+        if (instance != null)
+        {
+            Debug.Log("More than one CardCollection instance");
+            return;
+        }
         instance = this;
     }
 

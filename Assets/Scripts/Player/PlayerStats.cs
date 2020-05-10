@@ -15,11 +15,12 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        playerDeck = StarterDeck();
+        
     }
 
     private void Start()
     {
+        playerDeck = StarterDeck();
         energy = maxEnergy;
         lives = startLives;
     }
