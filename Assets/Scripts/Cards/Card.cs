@@ -23,6 +23,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public Image activeIndicator;
     [HideInInspector]
     public bool played = false;
+    public bool reward = true;
 
     public virtual void Start()
     {
@@ -50,11 +51,16 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     public abstract void PerformAction();
 
+    public void RewardAction(){
+        PlayerStats.AddCardToDeck(this);
+        Rewards.cardSelected = true;
+    }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if (PlayerStats.energy >= energyCost)
+            if (PlayerStats.energy >= energyCost && !reward)
             {
                 if(Hand.activeCard != null){
                     Hand.activeCard.activeIndicator.enabled = false;
@@ -62,6 +68,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 Hand.activeCard = this;
                 activeIndicator.enabled = true;
                 PerformAction();
+            } else if (reward){
+                RewardAction();
             }
         }
     }

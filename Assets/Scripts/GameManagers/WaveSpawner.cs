@@ -6,6 +6,13 @@ using UnityEngine.UI;
 public class WaveSpawner : MonoBehaviour
 {
 
+    private static WaveSpawner instance;
+    public static WaveSpawner Instance
+    {
+        get { return instance; }
+        set { instance = value; }
+    }
+
     private static int enemiesToKill = 0;
     private static bool waveInProgress = false;
     private static bool waveSpawned = false;
@@ -21,6 +28,14 @@ public class WaveSpawner : MonoBehaviour
     private static int waveToSpawn = 0;
     private static int currentWave = 0;
 
+    private void Awake() {
+        if (instance != null)
+        {
+            Debug.Log("More than one WaveManager instance");
+            return;
+        }
+        instance = this;
+    }
 
     private void Update()
     {
@@ -65,7 +80,7 @@ public class WaveSpawner : MonoBehaviour
         Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
     }
 
-    public static void UpdateWaveStatus()
+    public void UpdateWaveStatus()
     {
         enemiesToKill--;
         waveInProgress = enemiesToKill > 0;
@@ -77,5 +92,9 @@ public class WaveSpawner : MonoBehaviour
 
     public bool IsWaveInProgress(){
         return waveInProgress;
+    }
+
+    public int GetCurrentWave(){
+        return currentWave;
     }
 }

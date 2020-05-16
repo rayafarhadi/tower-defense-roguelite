@@ -28,6 +28,7 @@ public class Hand : MonoBehaviour
             float cardX = (-handAreaLength/2) + cardInterval*(i+1);
             hand[i].transform.localPosition = new Vector3(cardX, -50f, 0f);
             hand[i].handPosition = i;
+            hand[i].reward = false;
             if(activeCard != null){
                 if (i != activeCard.handPosition){
                     hand[i].activeIndicator.enabled = false;
@@ -39,7 +40,6 @@ public class Hand : MonoBehaviour
         }
 
         if (focusedCardIndex >= 0){
-            Debug.Log("focused");
             for (int i = 0; i < focusedCardIndex; i++){
                 Transform cardTransform = hand[i].transform;
                 cardTransform.Translate(new Vector3(-cardWidth/2, 0f, 0f), transform);

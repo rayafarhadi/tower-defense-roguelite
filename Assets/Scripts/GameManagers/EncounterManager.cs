@@ -3,45 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EncounterManager : MonoBehaviour
+public class EncounterManager : ScriptableObject
 {
-    public WaveSpawner waveSpawner;
-    public Deck encounterDeck;
     public int dealAmount = 5;
 
-    public Text energyText;
+    public bool encounterEnded = false;
 
 
-    private void Start() {
+    public void Init() {
         InitializeDeck();
-        encounterDeck.Deal(dealAmount);
+        PlayerStats.Instance.encounterDeck.Deal(dealAmount);
     }
 
-    private void Update() {
+    public void Update() {
 
-        if(waveSpawner.waveStarted){
-            encounterDeck.hand.DiscardHand();
-            waveSpawner.waveStarted = false;
+        if(WaveSpawner.Instance.waveStarted){
+            PlayerStats.Instance.encounterDeck.hand.DiscardHand();
+            WaveSpawner.Instance.waveStarted = false;
         }
 
-        if(waveSpawner.waveEnded){
-            encounterDeck.Deal(dealAmount);
-            waveSpawner.waveEnded = false;
+        if(WaveSpawner.Instance.waveEnded){
+
+            if (WaveSpawner.Instance.GetCurrentWave() > WaveSpawner.Instance.waves.Length - 1){
+                encounterEnded = true;
+            }
+
+            PlayerStats.Instance.encounterDeck.Deal(dealAmount);
+            WaveSpawner.Instance.waveEnded = false;
             PlayerStats.ResetEnergy();
         }
-
-        energyText.text = PlayerStats.energy.ToString();
-
     }
 
     private void InitializeDeck(){
         List<Card> playerDeck = PlayerStats.playerDeck;
-        encounterDeck.deck = new Stack<Card>();
+        PlayerStats.Instance.encounterDeck.deck = new Stack<Card>();
 
         for (int i = 0; i < playerDeck.Count; i++){
-            encounterDeck.deck.Push(playerDeck[i]);
+            PlayerStats.Instance.encounterDeck.deck.Push(playerDeck[i]);
         }
 
-        encounterDeck.Shuffle();
+        PlayerStats.Instance.encounterDeck.Shuffle();
     }
 }

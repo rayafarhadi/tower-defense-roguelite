@@ -77,4 +77,5 @@ public class Deck : MonoBehaviour
             deck.Push(tempDeck[i]);
         }
     }
+
 }

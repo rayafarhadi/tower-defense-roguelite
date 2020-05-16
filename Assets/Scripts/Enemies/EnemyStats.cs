@@ -50,7 +50,7 @@ public class EnemyStats : MonoBehaviour
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, transform.rotation);
         Destroy(effect, 5f);
 
-        WaveSpawner.UpdateWaveStatus();
+        WaveSpawner.Instance.UpdateWaveStatus();
 
         Destroy(gameObject);
     }
